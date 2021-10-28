@@ -1,0 +1,52 @@
+{
+  "products": [
+    {
+      "image": "1.jpg",
+      "name": "Flying Eagle F4 Raven",
+      "price": 11900,
+      "article": "T1",
+      "available": true,
+      "category": "Мужские"
+    },
+    {
+      "image": "2.jpg",
+      "name": "Flying Eagle F4 Raven Women",
+      "price": 11900,
+      "article": "T2",
+      "available": true,
+      "category": "Женские"
+    },
+    {
+      "image": "3.jpg",
+      "name": "Powerslide Next Grey 80",
+      "price": 21900,
+      "article": "T3",
+      "available": false,
+      "category": "Женские"
+    },
+    {
+      "image": "4.jpg",
+      "name": "Powerslide HC Evo Trinity Pro",
+      "price": 44900,
+      "article": "T4",
+      "available": true,
+      "category": "Мужские"
+    },
+    {
+      "image": "5.jpg",
+      "name": "Flying Eagle F6S Falcon",
+      "price": 14900,
+      "article": "T5",
+      "available": false,
+      "category": "Мужские"
+    },
+    {
+      "image": "6.jpg",
+      "name": "Powerslide Swell 100 Multicolor Flare",
+      "price": 19900,
+      "article": "T6",
+      "available": true,
+      "category": "Женские"
+    }
+  ]
+}

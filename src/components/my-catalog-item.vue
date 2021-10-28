@@ -1,0 +1,64 @@
+<template>
+  <div class="my-catalog-item item ">
+    <img
+      class="item_img"
+      :src="require('../assets/images/' + product_data.image)"
+      alt="img"
+    />
+    <div class="item_name">{{ product_data.name }}</div>
+    <div class="item_price">{{ product_data.price }} р.</div>
+    <button
+      @click="$emit('sendArticle', this.product_data.article)"
+      class="item_buy"
+    >
+      Купить
+    </button>
+  </div>
+</template>
+
+<script>
+export default {
+  name: "my-catalog-item",
+  props: {
+    product_data: {
+      type: Object,
+      default() {
+        return {};
+      },
+    },
+  },
+};
+</script>
+
+<style lang="scss" scoped>
+.item {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 2rem;
+  border: 1px solid rgba(0, 0, 0, 0.151);
+  line-height: 150%;
+  flex-basis: 30%;
+  margin-bottom: 2rem;
+  box-shadow: 0 0 8px rgba(48, 48, 48, 0.575);
+  &_name {
+    font-size: 1.8rem;
+    color: yellowgreen;
+  }
+  &_price {
+    margin-bottom: 5rem;
+  }
+  &_buy {
+    padding: 1rem 2rem;
+    font-family: inherit;
+    font-size: 1.2rem;
+    background: rgb(4, 179, 83);
+    color: white;
+    font-weight: 800;
+  }
+  &_img {
+    display: bl;
+    width: 100%;
+  }
+}
+</style>
