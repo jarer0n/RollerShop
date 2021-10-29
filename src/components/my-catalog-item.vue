@@ -7,10 +7,7 @@
     />
     <div class="item_name">{{ product_data.name }}</div>
     <div class="item_price">{{ product_data.price }} р.</div>
-    <button
-      @click="$emit('sendArticle', this.product_data.article)"
-      class="item_buy"
-    >
+    <button @click="$emit('addToCart', this.product_data)" class="item_buy">
       Купить
     </button>
   </div>

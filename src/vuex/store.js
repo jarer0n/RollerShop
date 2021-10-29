@@ -3,12 +3,35 @@ import {createStore} from 'vuex'
 
 export default createStore({
     state: {
-        products: []
+        products: [],
+        cart: []
     },
    
     mutations: {
         SET_PRODUCTS_TO_STATE: (state, products) => {
             state.products = products;
+        },
+        SET_CART: (state, product) => {
+            if(state.cart.length){
+                let productExists = false;
+                state.cart.map(function(i){
+                    if(i.article === product.article) {
+                        productExists = true;
+                        i.amount++
+                    } 
+                })
+                if(!productExists) {
+                    state.cart.push(product)
+                }
+
+            } else {
+                state.cart.push(product)
+            }
+            
+        },
+        REMOVE_FROM_CART: (state, index) => {
+            state.cart.splice(index, 1);
+            
         }
     },
     actions: {
@@ -25,6 +48,13 @@ export default createStore({
                 console.log(error)
                 return error;
             })
+        },
+
+        ADD_TO_CART({commit}, product) {
+            commit('SET_CART', product);
+        },
+        DEL_FROM_CART({commit}, index) {
+            commit('REMOVE_FROM_CART', index);
         }
     },
 
@@ -33,6 +63,9 @@ export default createStore({
 
         PRODUCTS(state) {
             return state.products;
+        },
+        CART(state) {
+            return state.cart;
         }
 
     },
