@@ -2,31 +2,22 @@
   <div>
     <div class="my-wrapper">
       <div class="my-wrapper-logo">{{ title }}</div>
-      <my-catalog />
-      <my-cart v-if="CART.length" :cart_data="CART" />
+      <keep-alive>
+        <router-view></router-view>
+      </keep-alive>
     </div>
   </div>
 </template>
 
 <script>
-import MyCatalog from "./my-catalog.vue";
-import MyCart from "./my-cart.vue";
-import { mapGetters } from "vuex";
-
 export default {
   name: "my-wrapper",
-  components: {
-    MyCatalog,
-    MyCart,
-  },
   data() {
     return {
       title: "Магазин",
     };
   },
-  computed: {
-    ...mapGetters(["CART"]),
-  },
+  computed: {},
 };
 </script>
 

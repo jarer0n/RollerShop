@@ -12,9 +12,11 @@ export default createStore({
             state.products = products;
         },
         SET_CART: (state, product) => {
+            product.amount = 1;
             if(state.cart.length){
                 let productExists = false;
                 state.cart.map(function(i){
+                    
                     if(i.article === product.article) {
                         productExists = true;
                         i.amount++
@@ -23,9 +25,17 @@ export default createStore({
                 if(!productExists) {
                     state.cart.push(product)
                 }
-
             } else {
                 state.cart.push(product)
+            }
+            
+        },
+        INCREMENT: (state, index) => {
+            state.cart[index].amount++;
+        },
+        DECREMENT: (state, index) => {
+            if(state.cart[index].amount > 1) {
+                state.cart[index].amount--;
             }
             
         },
@@ -51,7 +61,14 @@ export default createStore({
         },
 
         ADD_TO_CART({commit}, product) {
+            
             commit('SET_CART', product);
+        },
+        INCREMENT_CART_ITEM({commit}, index) {
+            commit('INCREMENT',index);
+        },
+        DECREMENT_CART_ITEM({commit}, index) {
+            commit('DECREMENT', index);
         },
         DEL_FROM_CART({commit}, index) {
             commit('REMOVE_FROM_CART', index);
