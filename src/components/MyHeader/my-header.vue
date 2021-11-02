@@ -2,15 +2,15 @@
   <header class="my-header">
     <div class="my-header-container">
       <div class="my-header_row">
-        <router-link to="/">
+        <router-link @click="logoActive" to="/">
           <div class="my-header_logo_item">
-            <div class="my-header_logo">
+            <div class="my-header_logo" :class="{ active: isActive }">
               <img src="@/assets/images/roller.png" alt="" />
             </div>
             <div class="my-header_logo_title">Roller Skates STORE</div>
           </div>
         </router-link>
-        <router-link to="/cart">
+        <router-link @click="logoActive" to="/cart">
           <div class="my-header_link_cart">
             <svg class="my-header_link_cart_icon">
               <use xlink:href="#cart"></use>
@@ -27,6 +27,17 @@
 import { mapGetters } from "vuex";
 export default {
   name: "my-header",
+  data() {
+    return {
+      isActive: false,
+      notActive: false,
+    };
+  },
+  methods: {
+    logoActive() {
+      this.isActive = !this.isActive;
+    },
+  },
 
   computed: {
     ...mapGetters(["CART"]),
@@ -53,10 +64,12 @@ export default {
     padding: 0.5rem;
     background: $grey;
     width: 7rem;
-    height: 7rem;
+    height: 95%;
     border-radius: 50%;
     box-shadow: inset 1px 15px 10px rgba($color: $headerColor, $alpha: 0.65);
     border: 1px solid $grey;
+    transition: all 1s ease;
+
     &_item {
       display: flex;
       align-items: center;
@@ -73,6 +86,9 @@ export default {
       font-weight: 800;
       margin-left: 1rem;
     }
+  }
+  &_logo.active {
+    transform: rotate(720deg);
   }
 
   &_icon {

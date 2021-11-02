@@ -9,6 +9,9 @@
     <div class="item_price">{{ product_data.price }} р.</div>
     <button @click="$emit('addToCart', this.product_data)" class="item_buy">
       В корзину
+      <svg class="item_buy_icon">
+        <use xlink:href="#addcart"></use>
+      </svg>
     </button>
   </div>
 </template>
@@ -52,10 +55,23 @@ export default {
   &_buy {
     padding: 1rem 2rem;
     font-family: inherit;
-    font-size: 1.2rem;
+    font-size: 1.3rem;
     background: lighten($color: $headerColor, $amount: 15%);
     color: $grey;
     font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+    &_icon {
+      width: 2.3rem;
+      height: 2rem;
+      margin-left: 1rem;
+    }
+    &:hover {
+      background: lighten($color: $headerColor, $amount: 30%);
+      color: lighten($color: $grey, $amount: 10%);
+    }
   }
   &_img {
     display: block;
