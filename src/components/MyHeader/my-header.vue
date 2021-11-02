@@ -1,0 +1,99 @@
+<template>
+  <header class="my-header">
+    <div class="my-header-container">
+      <div class="my-header_row">
+        <router-link to="/">
+          <div class="my-header_logo_item">
+            <div class="my-header_logo">
+              <img src="@/assets/images/roller.png" alt="" />
+            </div>
+            <div class="my-header_logo_title">Roller Skates STORE</div>
+          </div>
+        </router-link>
+        <router-link to="/cart">
+          <div class="my-header_link_cart">
+            <svg class="my-header_link_cart_icon">
+              <use xlink:href="#cart"></use>
+            </svg>
+            <span>{{ CART.length }}</span>
+          </div>
+        </router-link>
+      </div>
+    </div>
+  </header>
+</template>
+
+<script>
+import { mapGetters } from "vuex";
+export default {
+  name: "my-header",
+
+  computed: {
+    ...mapGetters(["CART"]),
+  },
+};
+</script>
+
+<style lang="scss">
+.my-header {
+  position: fixed;
+  z-index: 99999;
+  width: 100%;
+  height: 8rem;
+  top: 0;
+  left: 0;
+  background-color: $headerColor;
+  &_row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 8rem;
+  }
+  &_logo {
+    padding: 0.5rem;
+    background: $grey;
+    width: 7rem;
+    height: 7rem;
+    border-radius: 50%;
+    box-shadow: inset 1px 15px 10px rgba($color: $headerColor, $alpha: 0.65);
+    border: 1px solid $grey;
+    &_item {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    img {
+      width: 100%;
+      display: block;
+      padding: 0.3rem;
+    }
+    &_title {
+      color: $grey;
+      font-size: 2rem;
+      font-weight: 800;
+      margin-left: 1rem;
+    }
+  }
+
+  &_icon {
+    align-self: center;
+    justify-self: center;
+    color: red;
+  }
+  &_link_cart {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    span {
+      color: $grey;
+      font-weight: 500;
+    }
+  }
+  &_link_cart_icon {
+    width: 2.5rem;
+    height: 2.5rem;
+    color: $grey;
+    margin-right: 1rem;
+  }
+}
+</style>

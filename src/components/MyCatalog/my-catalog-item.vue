@@ -2,13 +2,13 @@
   <div class="my-catalog-item item ">
     <img
       class="item_img"
-      :src="require('../assets/images/' + product_data.image)"
+      :src="require('../../assets/images/' + product_data.image)"
       alt="img"
     />
     <div class="item_name">{{ product_data.name }}</div>
     <div class="item_price">{{ product_data.price }} р.</div>
     <button @click="$emit('addToCart', this.product_data)" class="item_buy">
-      Купить
+      В корзину
     </button>
   </div>
 </template>
@@ -38,24 +38,27 @@ export default {
   line-height: 150%;
   flex-basis: 30%;
   margin-bottom: 2rem;
-  box-shadow: 0 0 8px rgba(48, 48, 48, 0.575);
+  box-shadow: 0 0 10px rgba(48, 48, 48, 0.575);
   &_name {
     font-size: 1.8rem;
-    color: yellowgreen;
+    color: $headerColor;
+    font-weight: 500;
   }
   &_price {
     margin-bottom: 5rem;
+    color: $green;
+    font-weight: 700;
   }
   &_buy {
     padding: 1rem 2rem;
     font-family: inherit;
     font-size: 1.2rem;
-    background: rgb(4, 179, 83);
-    color: white;
-    font-weight: 800;
+    background: lighten($color: $headerColor, $amount: 15%);
+    color: $grey;
+    font-weight: 500;
   }
   &_img {
-    display: bl;
+    display: block;
     width: 100%;
   }
 }

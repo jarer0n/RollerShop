@@ -1,8 +1,8 @@
 import { createRouter, createWebHistory } from "vue-router"
 
 
-import MyCatalog from '../components/my-catalog'
-import MyCart from '../components/my-cart'
+import MyCatalog from '../components/MyCatalog/my-catalog'
+import MyCart from '../components/MyCart/my-cart'
 
 const routes = [
     {

@@ -17,6 +17,5 @@ export default {
 
 <style lang="scss">
 .app {
-  margin-top: 6rem;
 }
 </style>
