@@ -1,11 +1,27 @@
 <template>
   <div class="my-catalog">
     <h2>Каталог товаров</h2>
-    <my-select
-      :selected="selected"
-      :options="categories"
-      @selectedOption="sortedCategory"
-    />
+    <div class="my-catalog_filter">
+      <div>
+        <span
+          class="my-catalog_filter_item"
+          :class="{ 'sort-target': ascending }"
+          @click="sortByAscending"
+          >По возрастанию цены</span
+        >
+        <span
+          class="my-catalog_filter_item"
+          :class="{ 'sort-target': descending }"
+          @click="sortByDescending"
+          >По убыванию цены</span
+        >
+      </div>
+      <my-select
+        :selected="selected"
+        :options="categories"
+        @selectedOption="sortedCategory"
+      />
+    </div>
     <div class="my-catalog_row">
       <my-catalog-item
         v-for="product in showFilterProducts"
@@ -34,6 +50,8 @@ export default {
       ],
       selected: "Выберите из списка...",
       sortedProducts: [],
+      ascending: false,
+      descending: false,
     };
   },
   computed: {
@@ -63,6 +81,16 @@ export default {
       });
       this.selected = category.name;
     },
+    sortByDescending() {
+      this.ascending = false;
+      this.showFilterProducts.sort((a, b) => b.price - a.price);
+      this.descending = true;
+    },
+    sortByAscending() {
+      this.descending = false;
+      this.showFilterProducts.sort((a, b) => a.price - b.price);
+      this.ascending = true;
+    },
   },
   mounted() {
     this.GET_PRODUCTS_FROM_API();
@@ -79,6 +107,38 @@ export default {
     justify-content: space-between;
     flex-shrink: 1;
     position: relative;
+  }
+  &_filter {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+    &_item {
+      font-size: 1.4rem;
+      margin-right: 3rem;
+      position: relative;
+      cursor: pointer;
+      &::after {
+        content: "";
+        position: absolute;
+        top: 35%;
+        right: -10px;
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-width: 6px 3px 0 3px;
+        border-color: lighten($color: $headerColor, $amount: 35%) transparent
+          transparent transparent;
+      }
+
+      &:last-child::after {
+        transform: rotate(180deg);
+      }
+    }
+    &_item.sort-target {
+      color: lighten($color: $headerColor, $amount: 35%);
+      font-weight: 500;
+    }
   }
 }
 h2 {

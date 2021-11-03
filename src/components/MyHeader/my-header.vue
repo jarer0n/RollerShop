@@ -82,9 +82,10 @@ export default {
     }
     &_title {
       color: $grey;
-      font-size: 2rem;
-      font-weight: 800;
+      font-size: 1.5rem;
+      font-weight: 700;
       margin-left: 1rem;
+      max-width: 12rem;
     }
   }
   &_logo.active {

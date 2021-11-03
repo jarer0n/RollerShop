@@ -8,15 +8,17 @@
     >
       {{ selected }}
     </div>
-    <ul class="my-select_options" v-if="optionsVisible">
-      <li
-        @click.stop="selectedOption(op)"
-        v-for="op in options"
-        :key="op.value"
-      >
-        {{ op.name }}
-      </li>
-    </ul>
+    <transition name="transition-option">
+      <ul class="my-select_options" v-if="optionsVisible">
+        <li
+          @click.stop="selectedOption(op)"
+          v-for="op in options"
+          :key="op.value"
+        >
+          {{ op.name }}
+        </li>
+      </ul>
+    </transition>
   </div>
 </template>
 
@@ -70,10 +72,9 @@ export default {
   justify-content: flex-end;
   &_select {
     position: relative;
-    border: 1px solid grey;
+    box-shadow: 0px 0px 6px darken($color: $grey, $amount: 15%);
     width: 22rem;
     padding: 0.7rem;
-    margin-bottom: 2rem;
     cursor: pointer;
     &::before,
     &::after {
@@ -108,18 +109,40 @@ export default {
     display: inline-block;
     width: 22rem;
     position: absolute;
-    top: 3rem;
+    top: 3.5rem;
     right: 0;
     z-index: 100;
-    background: $grey;
+    background: white;
     cursor: pointer;
+    box-shadow: 0px 0px 6px darken($color: $grey, $amount: 15%);
     li {
-      border: 1px solid grey;
+      border-bottom: 1px solid $grey;
       padding: 0.7rem;
+      &:last-child {
+        border-bottom: none;
+      }
     }
     li:hover {
-      background: lighten($color: $grey, $amount: 10%);
+      background: lighten($color: $headerColor, $amount: 25%);
+      color: white;
     }
+  }
+}
+.transition-option-enter-active {
+  animation: bounce 0.3s;
+}
+.transition-option-leave-active {
+  animation: bounce 0.3s reverse;
+}
+@keyframes bounce {
+  0% {
+    transform: scale(0);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
   }
 }
 </style>
