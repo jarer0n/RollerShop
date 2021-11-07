@@ -1,5 +1,5 @@
 <template>
-  <div class="my-catalog">
+  <div class="my-catalog container">
     <h2>Каталог товаров</h2>
     <div class="my-catalog_filter">
       <div>
@@ -24,10 +24,20 @@
     </div>
     <div class="my-catalog_row">
       <my-catalog-item
-        v-for="product in showFilterProducts"
+        v-for="product in paginatedProducts"
         :key="product.article"
         :product_data="product"
         @addToCart="addToCart"
+        @click="targetProduct(product.article)"
+      />
+    </div>
+    <div class="my-catalog_pag" v-if="showFilterProducts.length > 7">
+      <my-catalog-pagination
+        v-for="page in TOTAL_PAGES"
+        :key="page"
+        :page="page"
+        @click="changePage(page)"
+        :class="{ page_selected: page === PAGE }"
       />
     </div>
   </div>
@@ -36,17 +46,19 @@
 <script>
 import MyCatalogItem from "./my-catalog-item.vue";
 import MySelect from "../MySelect/my-select.vue";
+import MyCatalogPagination from "./my-catalog-pagination.vue";
 import { mapActions, mapGetters } from "vuex";
 
 export default {
   name: "my-catalog",
-  components: { MyCatalogItem, MySelect },
+  components: { MyCatalogItem, MySelect, MyCatalogPagination },
   data() {
     return {
       categories: [
         { name: "Все", value: "ALL" },
         { name: "Мужские", value: "m" },
         { name: "Женские", value: "f" },
+        { name: "Детские", value: "c" },
       ],
       selected: "Выберите из списка...",
       sortedProducts: [],
@@ -55,7 +67,13 @@ export default {
     };
   },
   computed: {
-    ...mapGetters(["PRODUCTS", "CART"]),
+    ...mapGetters([
+      "PRODUCTS",
+      "CART",
+      "TOTAL_PAGES",
+      "PAGE",
+      "PRODUCTS_ON_PAGE",
+    ]),
 
     showFilterProducts() {
       if (this.sortedProducts.length) {
@@ -64,15 +82,29 @@ export default {
         return this.PRODUCTS;
       }
     },
+    paginatedProducts() {
+      let from = (this.PAGE - 1) * this.PRODUCTS_ON_PAGE;
+      let to = from + this.PRODUCTS_ON_PAGE;
+      return this.showFilterProducts.slice(from, to);
+    },
   },
   methods: {
-    ...mapActions(["GET_PRODUCTS_FROM_API", "ADD_TO_CART"]),
+    ...mapActions([
+      "GET_PRODUCTS_FROM_API",
+      "ADD_TO_CART",
+      "CHANGE_PAGE",
+      "TO_FIRST_PAGE",
+    ]),
+    targetProduct(article) {
+      this.$router.push({ name: "products", query: { products: article } });
+    },
 
     addToCart(event) {
       this.ADD_TO_CART(event);
     },
     sortedCategory(category) {
       this.sortedProducts = [];
+      this.TO_FIRST_PAGE();
       let vm = this;
       this.PRODUCTS.map(function(i) {
         if (i.category === category.name) {
@@ -91,6 +123,9 @@ export default {
       this.showFilterProducts.sort((a, b) => a.price - b.price);
       this.ascending = true;
     },
+    changePage(page) {
+      this.CHANGE_PAGE(page);
+    },
   },
   mounted() {
     this.GET_PRODUCTS_FROM_API();
@@ -104,9 +139,14 @@ export default {
   &_row {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
-    flex-shrink: 1;
+    justify-content: flex-start;
     position: relative;
+    margin-right: -1.8rem;
+  }
+  &_pag {
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
   &_filter {
     display: flex;

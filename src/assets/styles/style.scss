@@ -11,8 +11,14 @@ body{
     font-weight: 400;
     color: $darkGrey;
 }
-.my-header-container{
-    max-width: 110rem;
+.app {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    min-height: 100%;
+}
+.container{
+    max-width: 130rem;
     padding: 0 1.5rem;
     margin: 0 auto;
 }

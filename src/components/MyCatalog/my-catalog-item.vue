@@ -7,11 +7,14 @@
     />
     <div class="item_name">{{ product_data.name }}</div>
     <div class="item_price">{{ product_data.price }} р.</div>
-    <button @click="$emit('addToCart', this.product_data)" class="item_buy">
+    <button
+      @click.stop="$emit('addToCart', this.product_data)"
+      class="item_buy"
+    >
       В корзину
-      <svg class="item_buy_icon">
-        <use xlink:href="#addcart"></use>
-      </svg>
+      <span class="material-icons item_buy_icon">
+        add_shopping_cart
+      </span>
     </button>
   </div>
 </template>
@@ -39,9 +42,10 @@ export default {
   padding: 2rem;
   border: 1px solid rgba(0, 0, 0, 0.151);
   line-height: 150%;
-  flex-basis: 30%;
-  margin-bottom: 2rem;
+  flex-basis: 23.6%;
   box-shadow: 0 0 10px rgba(48, 48, 48, 0.575);
+  margin-bottom: 2rem;
+  margin-right: 1.8rem;
   &_name {
     font-size: 1.8rem;
     color: $headerColor;

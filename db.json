@@ -47,6 +47,39 @@
       "article": "T6",
       "available": true,
       "category": "Женские"
+    },
+    {
+      "image": "7.jpg",
+      "name": "Flying Eagle F110S",
+      "price": 14900,
+      "article": "T7",
+      "available": true,
+      "category": "Мужские"
+    },
+    {
+      "image": "8.jpg",
+      "name": "Flying Eagle F7 Optimum",
+      "price": 17900,
+      "article": "T8",
+      "available": true,
+      "category": "Мужские"
+    },
+    {
+      "image": "9.jpg",
+      "name": "Flying Eagle Drift-JRS",
+      "price": 26900,
+      "article": "T9",
+      "available": true,
+      "category": "Детские"
+    },
+    {
+      "image": "10.jpg",
+      "name": "Flying Eagle S6S",
+      "price": 8500,
+      "article": "T10",
+      "available": true,
+      "category": "Детские"
     }
+    
   ]
 }

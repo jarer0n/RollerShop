@@ -11,7 +11,10 @@ const actions = {...commonActions, ...apiRequest}
 export default createStore({
     state: {
         products: [],
-        cart: []
+        cart: [],
+        productsOnPage: 8,
+        page: 1,
+        totalPages: 0
     },
     mutations,
     actions,

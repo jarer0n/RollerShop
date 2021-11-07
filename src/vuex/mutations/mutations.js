@@ -32,6 +32,12 @@ export default {
     },
     REMOVE_FROM_CART: (state, index) => {
         state.cart.splice(index, 1);
-      
-}
+    },
+    CHANGE_THIS_PAGE: (state, page) => {
+        state.page = page
+    },
+    CHANGE_FIRST_PAGE: (state) => {
+        state.page = 1;
+    }
+
 }

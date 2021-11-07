@@ -1,7 +1,5 @@
 <template>
-  <div class="app">
-    <my-wrapper />
-  </div>
+  <my-wrapper />
 </template>
 
 <script>

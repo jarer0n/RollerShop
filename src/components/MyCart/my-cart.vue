@@ -1,5 +1,5 @@
 <template>
-  <div class="my-cart">
+  <div class="my-cart container">
     <router-link to="/">
       <div class="my-catalog_link-cart">Назад в каталог</div>
     </router-link>

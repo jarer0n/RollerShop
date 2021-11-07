@@ -1,19 +1,21 @@
 <template>
-  <div>
-    <div class="my-wrapper">
-      <my-header />
-      <div class="my-wrapper-logo">{{ title }}</div>
-      <keep-alive>
-        <router-view></router-view>
-      </keep-alive>
+  <div class="my-wrapper">
+    <my-header />
+    <div class="my-wrapper-logo">
+      {{ title }}
     </div>
+    <keep-alive>
+      <router-view></router-view>
+    </keep-alive>
   </div>
+  <my-footer />
 </template>
 
 <script>
 import myHeader from "./MyHeader/my-header.vue";
+import myFooter from "./MyFooter/my-footer.vue";
 export default {
-  components: { myHeader },
+  components: { myHeader, myFooter },
   name: "my-wrapper",
   data() {
     return {
@@ -26,8 +28,8 @@ export default {
 
 <style lang="scss" scoped>
 .my-wrapper {
-  margin: 8rem auto 0;
-  max-width: 90rem;
+  flex: 1 1 auto;
+  margin-top: 8rem;
   &-logo {
     font-size: 3rem;
     margin-bottom: 3rem;

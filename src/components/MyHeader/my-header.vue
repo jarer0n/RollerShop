@@ -1,6 +1,6 @@
 <template>
   <header class="my-header">
-    <div class="my-header-container">
+    <div class="my-header-container container">
       <div class="my-header_row">
         <router-link @click="logoActive" to="/">
           <div class="my-header_logo_item">
@@ -12,9 +12,9 @@
         </router-link>
         <router-link @click="logoActive" to="/cart">
           <div class="my-header_link_cart">
-            <svg class="my-header_link_cart_icon">
-              <use xlink:href="#cart"></use>
-            </svg>
+            <span class="material-icons my-header_link_cart_icon">
+              shopping_cart
+            </span>
             <span>{{ CART.length }}</span>
           </div>
         </router-link>

@@ -14,5 +14,11 @@ export default {
     },
     DEL_FROM_CART({commit}, index) {
         commit('REMOVE_FROM_CART', index);
+    },
+    CHANGE_PAGE({commit}, page) {
+        commit ('CHANGE_THIS_PAGE', page)
+    },
+    TO_FIRST_PAGE({commit}) {
+        commit ('CHANGE_FIRST_PAGE')
     }
 }
