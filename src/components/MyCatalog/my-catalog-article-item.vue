@@ -1,7 +1,10 @@
 <template>
   <div class="my-catalog-article-item container">
     <my-catalog-slider :product="product" />
-    <div>Название: {{ product.name }}</div>
+    <div>
+      <div>Название: {{ product.name }}</div>
+      <div></div>
+    </div>
   </div>
 </template>
 
@@ -11,12 +14,15 @@ import MyCatalogSlider from "./my-catalog-slider.vue";
 export default {
   name: "my-catalog-article-item",
   components: { MyCatalogSlider },
+  data() {
+    return {};
+  },
   computed: {
     ...mapGetters(["PRODUCTS"]),
     product() {
       let result = {};
       let vm = this;
-      this.PRODUCTS.map(function(i) {
+      this.PRODUCTS.find(function(i) {
         if (i.article === vm.$route.query.products) {
           result = i;
         }
@@ -24,6 +30,7 @@ export default {
       return result;
     },
   },
+  watch: {},
   methods: {
     ...mapActions(["GET_PRODUCTS_FROM_API"]),
   },

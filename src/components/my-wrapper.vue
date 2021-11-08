@@ -4,9 +4,7 @@
     <div class="my-wrapper-logo">
       {{ title }}
     </div>
-    <keep-alive>
-      <router-view></router-view>
-    </keep-alive>
+    <router-view></router-view>
   </div>
   <my-footer />
 </template>

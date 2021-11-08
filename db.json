@@ -18,7 +18,6 @@
     },
     {
       "image": "3.jpg",
-      "imageForSlider": ["4.jpg", "5.jpg","6.jpg"],
       "name": "Powerslide Next Grey 80",
       "price": 21900,
       "article": "T3",
@@ -55,7 +54,8 @@
       "price": 14900,
       "article": "T7",
       "available": true,
-      "category": "Мужские"
+      "category": "Мужские",
+      "about": "asdas"
     },
     {
       "image": "8.jpg",

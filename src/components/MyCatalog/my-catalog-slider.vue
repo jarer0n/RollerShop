@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div v-if="product.image">
     <vueper-slides
       class="no-shadow"
       autoplay
@@ -11,7 +11,7 @@
       <vueper-slide
         v-for="i in 3"
         :key="i"
-        :image="require('../../assets/images/' + product.image)"
+        :image="require('@/assets/images/' + product.image)"
       />
     </vueper-slides>
     <i class="icon pause_circle_outline"></i>
