@@ -2,15 +2,19 @@
   <header class="my-header">
     <div class="my-header-container container">
       <div class="my-header_row">
-        <router-link @click="logoActive" to="/">
+        <router-link to="/">
           <div class="my-header_logo_item">
-            <div class="my-header_logo" :class="{ active: isActive }">
-              <img src="@/assets/images/roller.png" alt="" />
-            </div>
+            <img
+              class="my-header_logo"
+              :class="{ active: (isActive = !isActive) }"
+              src="@/assets/images/tyre.png"
+              alt=""
+            />
+
             <div class="my-header_logo_title">Roller Skates STORE</div>
           </div>
         </router-link>
-        <router-link @click="logoActive" to="/cart">
+        <router-link to="/cart">
           <div class="my-header_link_cart">
             <span class="material-icons my-header_link_cart_icon">
               shopping_cart
@@ -30,14 +34,9 @@ export default {
   data() {
     return {
       isActive: false,
-      notActive: false,
     };
   },
-  methods: {
-    logoActive() {
-      this.isActive = !this.isActive;
-    },
-  },
+  methods: {},
 
   computed: {
     ...mapGetters(["CART"]),
@@ -61,13 +60,10 @@ export default {
     height: 8rem;
   }
   &_logo {
-    padding: 0.5rem;
     background: $grey;
     width: 7rem;
     height: 95%;
     border-radius: 50%;
-    box-shadow: inset 1px 15px 10px rgba($color: $headerColor, $alpha: 0.65);
-    border: 1px solid $grey;
     transition: all 1s ease;
 
     &_item {

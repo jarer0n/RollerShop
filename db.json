@@ -18,6 +18,7 @@
     },
     {
       "image": "3.jpg",
+      "imageForSlider": ["4.jpg", "5.jpg","6.jpg"],
       "name": "Powerslide Next Grey 80",
       "price": 21900,
       "article": "T3",

@@ -1,14 +1,16 @@
 <template>
   <div class="my-catalog-article-item container">
-    Это страница артикула {{ product.article }}
+    <my-catalog-slider :product="product" />
     <div>Название: {{ product.name }}</div>
   </div>
 </template>
 
 <script>
 import { mapGetters, mapActions } from "vuex";
+import MyCatalogSlider from "./my-catalog-slider.vue";
 export default {
   name: "my-catalog-article-item",
+  components: { MyCatalogSlider },
   computed: {
     ...mapGetters(["PRODUCTS"]),
     product() {
@@ -31,4 +33,9 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.my-catalog-article-item {
+  display: flex;
+  justify-content: space-between;
+}
+</style>
