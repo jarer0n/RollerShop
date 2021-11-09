@@ -1,9 +1,6 @@
 <template>
   <div class="my-wrapper">
     <my-header />
-    <div class="my-wrapper-logo">
-      {{ title }}
-    </div>
     <router-view></router-view>
   </div>
   <my-footer />
@@ -16,9 +13,7 @@ export default {
   components: { myHeader, myFooter },
   name: "my-wrapper",
   data() {
-    return {
-      title: "Магазин",
-    };
+    return {};
   },
   computed: {},
 };

@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory } from "vue-router"
 
-
+import MyMain from '../components/MyMain/my-main'
 import MyCatalog from '../components/MyCatalog/my-catalog'
 import MyCart from '../components/MyCart/my-cart'
 import MyArticleItem from '../components/MyCatalog/my-catalog-article-item'
@@ -8,9 +8,15 @@ import MyArticleItem from '../components/MyCatalog/my-catalog-article-item'
 const routes = [
     {
         path: '/',
+        name: 'main',
+        component: MyMain
+    },
+    {
+        path: '/catalog',
         name: 'catalog',
         component: MyCatalog
     },
+    
     {
         path: '/cart',
         name: 'cart',

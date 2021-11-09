@@ -60,11 +60,4 @@ export default {
 .vueperslides__bullet--active .default {
   background-color: lighten($color: $headerColor, $amount: 30%);
 }
-
-.vueperslides__bullet span {
-  //   display: block;
-  //   color: #fff;
-  //   font-size: 10px;
-  //   opacity: 0.8;
-}
 </style>

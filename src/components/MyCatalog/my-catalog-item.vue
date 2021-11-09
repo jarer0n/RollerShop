@@ -34,7 +34,7 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .item {
   display: flex;
   flex-direction: column;
@@ -43,6 +43,7 @@ export default {
   border: 1px solid rgba(0, 0, 0, 0.151);
   line-height: 150%;
   flex-basis: 23.6%;
+  background: white;
   box-shadow: 0 0 10px rgba(48, 48, 48, 0.575);
   margin-bottom: 2rem;
   margin-right: 1.8rem;

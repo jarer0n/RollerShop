@@ -1,9 +1,24 @@
 <template>
-  <div class="my-catalog-article-item container">
-    <my-catalog-slider :product="product" />
-    <div>
-      <div>Название: {{ product.name }}</div>
-      <div></div>
+  <div class="my-catalog-article-item ">
+    <div class="container">
+      <div class="my-catalog-article-item_wrapper">
+        <my-catalog-slider :product="product" />
+        <div class="my-catalog-article-item_row">
+          <div class="my-catalog-article-item_title">
+            {{ product.name }} <span>({{ product.article }})</span>
+          </div>
+          <div class="my-catalog-article-item_info">{{ product.about }}</div>
+          <div class="my-catalog-article-item_price">
+            {{ product.price }} Р.
+          </div>
+          <button @click="addToCart" class="item_buy">
+            В корзину
+            <span class="material-icons item_buy_icon">
+              add_shopping_cart
+            </span>
+          </button>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -32,7 +47,10 @@ export default {
   },
   watch: {},
   methods: {
-    ...mapActions(["GET_PRODUCTS_FROM_API"]),
+    ...mapActions(["GET_PRODUCTS_FROM_API", "ADD_TO_CART"]),
+    addToCart() {
+      this.ADD_TO_CART(this.product);
+    },
   },
   mounted() {
     this.GET_PRODUCTS_FROM_API();
@@ -40,9 +58,35 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .my-catalog-article-item {
-  display: flex;
-  justify-content: space-between;
+  &_wrapper {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 12rem;
+  }
+  &_row {
+    flex-basis: 40%;
+  }
+  &_title {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 3rem;
+    span {
+      font-weight: 400;
+      font-size: 1.6rem;
+    }
+  }
+  &_info {
+    font-size: 1.5rem;
+    line-height: 140%;
+    margin-bottom: 2rem;
+  }
+  &_price {
+    font-size: 2rem;
+    font-weight: 700;
+    color: $green;
+    margin-bottom: 4rem;
+  }
 }
 </style>
