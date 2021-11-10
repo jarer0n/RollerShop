@@ -12,9 +12,11 @@ export default createStore({
     state: {
         products: [],
         cart: [],
+        favorite: [1,2,3],
         productsOnPage: 8,
         page: 1,
-        totalPages: 0
+        totalPages: 0,
+
     },
     mutations,
     actions,

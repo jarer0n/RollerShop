@@ -1,44 +1,46 @@
 <template>
-  <div class="my-catalog container">
-    <h2>Каталог товаров</h2>
-    <div class="my-catalog_filter">
-      <div>
-        <span
-          class="my-catalog_filter_item"
-          :class="{ 'sort-target': ascending }"
-          @click="sortByAscending"
-          >По возрастанию цены</span
-        >
-        <span
-          class="my-catalog_filter_item"
-          :class="{ 'sort-target': descending }"
-          @click="sortByDescending"
-          >По убыванию цены</span
-        >
+  <div class="my-catalog">
+    <div class="container">
+      <h2 class="my-catalog_title">Каталог товаров</h2>
+      <div class="my-catalog_filter">
+        <div>
+          <span
+            class="my-catalog_filter_item"
+            :class="{ 'sort-target': ascending }"
+            @click="sortByAscending"
+            >По возрастанию цены</span
+          >
+          <span
+            class="my-catalog_filter_item"
+            :class="{ 'sort-target': descending }"
+            @click="sortByDescending"
+            >По убыванию цены</span
+          >
+        </div>
+        <my-select
+          :selected="selected"
+          :options="categories"
+          @selectedOption="sortedCategory"
+        />
       </div>
-      <my-select
-        :selected="selected"
-        :options="categories"
-        @selectedOption="sortedCategory"
-      />
-    </div>
-    <div class="my-catalog_row">
-      <my-catalog-item
-        v-for="product in paginatedProducts"
-        :key="product.article"
-        :product_data="product"
-        @addToCart="addToCart"
-        @click="targetProduct(product.article)"
-      />
-    </div>
-    <div class="my-catalog_pag" v-if="showFilterProducts.length > 7">
-      <my-catalog-pagination
-        v-for="page in TOTAL_PAGES"
-        :key="page"
-        :page="page"
-        @click="changePage(page)"
-        :class="{ page_selected: page === PAGE }"
-      />
+      <div class="my-catalog_row">
+        <my-catalog-item
+          v-for="product in paginatedProducts"
+          :key="product.article"
+          :product_data="product"
+          @addToCart="addToCart"
+          @click="targetProduct(product.article)"
+        />
+      </div>
+      <div class="my-catalog_pag" v-if="showFilterProducts.length > 7">
+        <my-catalog-pagination
+          v-for="page in TOTAL_PAGES"
+          :key="page"
+          :page="page"
+          @click="changePage(page)"
+          :class="{ page_selected: page === PAGE }"
+        />
+      </div>
     </div>
   </div>
 </template>
@@ -136,6 +138,11 @@ export default {
 <style lang="scss">
 .my-catalog {
   position: relative;
+  margin-top: 5rem;
+  &_title {
+    font-size: 2.1rem;
+    font-weight: 600;
+  }
   &_row {
     display: flex;
     flex-wrap: wrap;
@@ -167,8 +174,7 @@ export default {
         height: 0;
         border-style: solid;
         border-width: 6px 3px 0 3px;
-        border-color: lighten($color: $headerColor, $amount: 35%) transparent
-          transparent transparent;
+        border-color: $orange transparent transparent transparent;
       }
 
       &:last-child::after {
@@ -176,8 +182,8 @@ export default {
       }
     }
     &_item.sort-target {
-      color: lighten($color: $headerColor, $amount: 35%);
-      font-weight: 500;
+      color: $orange;
+      font-weight: 600;
     }
   }
 }

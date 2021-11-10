@@ -11,7 +11,7 @@
           <div class="my-catalog-article-item_price">
             {{ product.price }} Р.
           </div>
-          <button @click="addToCart" class="item_buy">
+          <button @click="addToCart" class="item_buy article_btn">
             В корзину
             <span class="material-icons item_buy_icon">
               add_shopping_cart
@@ -85,8 +85,15 @@ export default {
   &_price {
     font-size: 2rem;
     font-weight: 700;
-    color: $green;
+    color: $orange;
     margin-bottom: 4rem;
+  }
+  .article_btn {
+    box-shadow: 0 0 8px $orange;
+    transition: all 0.2s ease;
+    &:hover {
+      box-shadow: 0 0 14px $orange;
+    }
   }
 }
 </style>

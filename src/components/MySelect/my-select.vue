@@ -72,7 +72,8 @@ export default {
   justify-content: flex-end;
   &_select {
     position: relative;
-    box-shadow: 0px 0px 6px darken($color: $grey, $amount: 15%);
+    background: $grey;
+    color: $darkGrey;
     width: 22rem;
     padding: 0.7rem;
     cursor: pointer;
@@ -84,7 +85,7 @@ export default {
       right: 5px;
       width: 1rem;
       height: 0.2rem;
-      background: $grey;
+      background: $orange;
       transition: all 0.1s ease;
     }
     &::after {
@@ -112,9 +113,9 @@ export default {
     top: 3.5rem;
     right: 0;
     z-index: 100;
-    background: white;
+    background: $grey;
     cursor: pointer;
-    box-shadow: 0px 0px 6px darken($color: $grey, $amount: 15%);
+    color: $darkGrey;
     li {
       border-bottom: 1px solid $grey;
       padding: 0.7rem;
@@ -123,8 +124,8 @@ export default {
       }
     }
     li:hover {
-      background: lighten($color: $headerColor, $amount: 25%);
-      color: white;
+      background: $orange;
+      color: $grey;
     }
   }
 }

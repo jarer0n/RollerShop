@@ -58,6 +58,6 @@ export default {
 }
 
 .vueperslides__bullet--active .default {
-  background-color: lighten($color: $headerColor, $amount: 30%);
+  background-color: $headerColor;
 }
 </style>

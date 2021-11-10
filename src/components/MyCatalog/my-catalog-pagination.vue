@@ -27,17 +27,18 @@ export default {
   align-items: center;
   justify-content: center;
   width: 2.5rem;
-  font-size: 1.2rem;
+  font-size: 1rem;
   height: 2.5rem;
   cursor: pointer;
 
   &:hover {
     background: $grey;
-    color: $headerColor;
+    color: $darkGrey;
   }
 }
 .page_selected {
-  background: lighten($color: $headerColor, $amount: 25%);
+  background: $orange;
   color: $grey;
+  border: none;
 }
 </style>

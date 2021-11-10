@@ -40,28 +40,27 @@ export default {
   flex-direction: column;
   justify-content: space-between;
   padding: 2rem;
-  border: 1px solid rgba(0, 0, 0, 0.151);
   line-height: 150%;
   flex-basis: 23.6%;
   background: white;
-  box-shadow: 0 0 10px rgba(48, 48, 48, 0.575);
+  box-shadow: 0 0 6px rgba($color: $grey, $alpha: 0.7);
   margin-bottom: 2rem;
   margin-right: 1.8rem;
   &_name {
     font-size: 1.8rem;
-    color: $headerColor;
-    font-weight: 500;
+    color: $darkGrey;
+    font-weight: 600;
   }
   &_price {
     margin-bottom: 5rem;
-    color: $green;
+    color: rgb(100, 165, 3);
     font-weight: 700;
   }
   &_buy {
     padding: 1rem 2rem;
     font-family: inherit;
     font-size: 1.3rem;
-    background: lighten($color: $headerColor, $amount: 15%);
+    background: $darkGrey;
     color: $grey;
     font-weight: 500;
     display: flex;
@@ -74,7 +73,7 @@ export default {
       margin-left: 1rem;
     }
     &:hover {
-      background: lighten($color: $headerColor, $amount: 30%);
+      background: lighten($color: $darkGrey, $amount: 15%);
       color: lighten($color: $grey, $amount: 10%);
     }
   }

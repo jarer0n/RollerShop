@@ -34,7 +34,9 @@ export default {
   data() {
     return {
       slides: [
-        { image: require("@/assets/images/mainSlider1.jpg") },
+        {
+          image: require("@/assets/images/mainSlider1.jpg"),
+        },
         { image: require("@/assets/images/mainSlider2.jpg") },
         { image: require("@/assets/images/mainSlider3.jpg") },
         { image: require("@/assets/images/mainSlider4.jpg") },
@@ -49,6 +51,13 @@ export default {
   width: 100%;
   box-shadow: none;
   border-radius: 0;
+}
+.vueperslide__title {
+  position: absolute;
+  bottom: 15px;
+  right: 15px;
+  color: $grey;
+  font-size: 2.8rem;
 }
 .vueperslide.main-slider_slide {
   background-size: cover;

@@ -5,6 +5,9 @@ export default {
     CART(state) {
         return state.cart;
     },
+    FAVORITE(state) {
+        return state.favorite;
+    },
     TOTAL_PAGES(state) {
         return state.totalPages;
     },
