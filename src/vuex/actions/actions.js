@@ -6,6 +6,9 @@ export default {
         
         commit('SET_CART', product);
     },
+    ADD_TO_FAVORITE({commit}, product) {
+        commit('SET_FAVORITE', product)
+    },
     INCREMENT_CART_ITEM({commit}, index) {
         commit('INCREMENT',index);
     },

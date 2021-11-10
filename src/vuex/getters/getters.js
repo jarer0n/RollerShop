@@ -16,5 +16,5 @@ export default {
     },
     PRODUCTS_ON_PAGE(state) {
         return state.productsOnPage;
-    }
+    },
 }

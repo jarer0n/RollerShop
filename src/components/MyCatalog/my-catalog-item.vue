@@ -1,5 +1,13 @@
 <template>
   <div class="my-catalog-item item ">
+    <span
+      :class="{ active: FavoriteActive }"
+      @click.stop="$emit('addToFavorite', this.product_data)"
+      @click="FavoriteActive = !FavoriteActive"
+      class="material-icons item_favorite"
+    >
+      star
+    </span>
     <img
       class="item_img"
       :src="require('../../assets/images/' + product_data.image)"
@@ -20,6 +28,7 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
 export default {
   name: "my-catalog-item",
   props: {
@@ -29,6 +38,14 @@ export default {
         return {};
       },
     },
+  },
+  data() {
+    return {
+      FavoriteActive: false,
+    };
+  },
+  computed: {
+    ...mapGetters(["IS_ACTIVE"]),
   },
   mounted() {},
 };
@@ -76,6 +93,18 @@ export default {
       background: lighten($color: $darkGrey, $amount: 15%);
       color: lighten($color: $grey, $amount: 10%);
     }
+  }
+  &_favorite {
+    color: rgba($color: $darkGrey, $alpha: 0.5);
+    display: flex;
+    font-size: 2.8rem;
+    align-items: flex-end;
+    justify-content: flex-end;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+  }
+  &_favorite.active {
+    color: $orange;
   }
   &_img {
     display: block;

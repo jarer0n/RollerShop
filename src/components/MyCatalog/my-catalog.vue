@@ -29,6 +29,7 @@
           :key="product.article"
           :product_data="product"
           @addToCart="addToCart"
+          @addToFavorite="addToFavorite"
           @click="targetProduct(product.article)"
         />
       </div>
@@ -94,6 +95,7 @@ export default {
     ...mapActions([
       "GET_PRODUCTS_FROM_API",
       "ADD_TO_CART",
+      "ADD_TO_FAVORITE",
       "CHANGE_PAGE",
       "TO_FIRST_PAGE",
     ]),
@@ -103,6 +105,9 @@ export default {
 
     addToCart(event) {
       this.ADD_TO_CART(event);
+    },
+    addToFavorite(event) {
+      this.ADD_TO_FAVORITE(event);
     },
     sortedCategory(category) {
       this.sortedProducts = [];

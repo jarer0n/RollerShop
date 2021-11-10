@@ -12,7 +12,7 @@ export default createStore({
     state: {
         products: [],
         cart: [],
-        favorite: [1,2,3],
+        favorite: [],
         productsOnPage: 8,
         page: 1,
         totalPages: 0,
