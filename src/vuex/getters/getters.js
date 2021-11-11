@@ -17,4 +17,7 @@ export default {
     PRODUCTS_ON_PAGE(state) {
         return state.productsOnPage;
     },
+    SEARCH_VALUE(state) {
+        return state.searchValue;
+    }
 }

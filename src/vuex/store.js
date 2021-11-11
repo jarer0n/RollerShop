@@ -16,6 +16,7 @@ export default createStore({
         productsOnPage: 8,
         page: 1,
         totalPages: 0,
+        searchValue: ''
 
     },
     mutations,

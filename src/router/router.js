@@ -3,6 +3,7 @@ import { createRouter, createWebHistory } from "vue-router"
 import MyMain from '../components/MyMain/my-main'
 import MyCatalog from '../components/MyCatalog/my-catalog'
 import MyCart from '../components/MyCart/my-cart'
+import MyFavorite from '../components/MyFavorite/my-favorite'
 import MyArticleItem from '../components/MyCatalog/my-catalog-article-item'
 
 const routes = [
@@ -21,6 +22,12 @@ const routes = [
         path: '/cart',
         name: 'cart',
         component: MyCart,
+        props: true
+    },
+    {
+        path: '/favorite',
+        name: 'favorite',
+        component: MyFavorite,
         props: true
     },
     {

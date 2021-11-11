@@ -76,6 +76,7 @@ export default {
       "TOTAL_PAGES",
       "PAGE",
       "PRODUCTS_ON_PAGE",
+      "SEARCH_VALUE",
     ]),
 
     showFilterProducts() {
@@ -133,9 +134,28 @@ export default {
     changePage(page) {
       this.CHANGE_PAGE(page);
     },
+    sortBySearch(value) {
+      let val = value;
+      this.sortedProducts = [...this.PRODUCTS];
+      this.TO_FIRST_PAGE();
+      if (val) {
+        this.sortedProducts = this.sortedProducts.filter(function(i) {
+          return i.name.toLowerCase().includes(val.toLowerCase());
+        });
+      } else {
+        this.sortedProducts = this.PRODUCTS;
+      }
+    },
+  },
+  watch: {
+    SEARCH_VALUE() {
+      this.sortBySearch(this.SEARCH_VALUE);
+    },
   },
   mounted() {
-    this.GET_PRODUCTS_FROM_API();
+    this.GET_PRODUCTS_FROM_API().then(() => {
+      this.sortBySearch(this.SEARCH_VALUE);
+    });
   },
 };
 </script>

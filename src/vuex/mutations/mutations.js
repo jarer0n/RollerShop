@@ -29,6 +29,7 @@ export default {
             
         }
     },
+
     INCREMENT: (state, index) => {
         state.cart[index].amount++;
     },
@@ -41,11 +42,17 @@ export default {
     REMOVE_FROM_CART: (state, index) => {
         state.cart.splice(index, 1);
     },
+    REMOVE_FROM_FAVORITE: (state,index) => {
+        state.favorite.splice(index, 1)
+    },
     CHANGE_THIS_PAGE: (state, page) => {
         state.page = page
     },
     CHANGE_FIRST_PAGE: (state) => {
         state.page = 1;
+    },
+    SET_SEARCH_VALUE_TO_STATE: (state, value) => {
+        state.searchValue = value;
     }
 
 }

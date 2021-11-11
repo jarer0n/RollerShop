@@ -1,13 +1,15 @@
 <template>
   <div class="my-catalog-item item ">
-    <span
-      :class="{ active: FavoriteActive }"
-      @click.stop="$emit('addToFavorite', this.product_data)"
-      @click="FavoriteActive = !FavoriteActive"
-      class="material-icons item_favorite"
-    >
-      star
-    </span>
+    <div class="item_to_favorite">
+      <span
+        @click.stop="$emit('addToFavorite', this.product_data)"
+        class="material-icons item_favorite"
+        :class="{ active: favoriteActive }"
+        @click="favoriteActive = !favoriteActive"
+      >
+        star
+      </span>
+    </div>
     <img
       class="item_img"
       :src="require('../../assets/images/' + product_data.image)"
@@ -28,7 +30,7 @@
 </template>
 
 <script>
-import { mapGetters } from "vuex";
+import { mapGetters, mapActions } from "vuex";
 export default {
   name: "my-catalog-item",
   props: {
@@ -41,11 +43,12 @@ export default {
   },
   data() {
     return {
-      FavoriteActive: false,
+      favoriteActive: false,
     };
   },
+
   computed: {
-    ...mapGetters(["IS_ACTIVE"]),
+    ...mapGetters(["FAVORITE"]),
   },
   mounted() {},
 };
@@ -94,14 +97,20 @@ export default {
       color: lighten($color: $grey, $amount: 10%);
     }
   }
+  &_to_favorite {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
   &_favorite {
     color: rgba($color: $darkGrey, $alpha: 0.5);
-    display: flex;
+    padding: 0.2rem;
     font-size: 2.8rem;
-    align-items: flex-end;
-    justify-content: flex-end;
     cursor: pointer;
     transition: all 0.3s ease-in-out;
+    &:hover {
+      background: darken($color: $grey, $amount: 5%);
+    }
   }
   &_favorite.active {
     color: $orange;

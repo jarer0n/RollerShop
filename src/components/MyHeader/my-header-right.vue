@@ -1,7 +1,8 @@
 <template>
   <div class="my-header_right">
+    <my-header-search />
     <div class="my-header_link_cart">
-      <router-link to="/cart">
+      <router-link to="/favorite">
         <div class="my-header_link_cart_row">
           <span class="material-icons my-header_link_cart_icon">
             star
@@ -28,7 +29,11 @@
 
 <script>
 import { mapGetters } from "vuex";
+import MyHeaderSearch from "./my-header-search.vue";
 export default {
+  components: {
+    MyHeaderSearch,
+  },
   name: "my-header-right",
   computed: {
     ...mapGetters(["CART", "FAVORITE"]),
