@@ -32,6 +32,7 @@
           @addToFavorite="addToFavorite"
           @click="targetProduct(product.article)"
         />
+        <div v-if="emptySearch">По вашему запросу ничего не найдено</div>
       </div>
       <div class="my-catalog_pag" v-if="showFilterProducts.length > 7">
         <my-catalog-pagination
@@ -67,6 +68,7 @@ export default {
       sortedProducts: [],
       ascending: false,
       descending: false,
+      emptySearch: false,
     };
   },
   computed: {

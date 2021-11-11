@@ -1,21 +1,30 @@
 <template>
-  <div class="my-cart container">
-    <router-link to="/">
-      <div class="my-catalog_link-cart">Назад в каталог</div>
-    </router-link>
-    <h3>Корзина</h3>
-    <p v-if="!CART.length">Корзина пуста! Добавьте товары!</p>
-    <div class="my-cart_wrapper">
-      <my-cart-item
-        v-for="(cartItem, index) in CART"
-        :key="cartItem.article"
-        :cart_item_data="cartItem"
-        @delFromCart="delFromCart(index)"
-        @decrementCartItem="decrementCartItem(index)"
-        @incrementCartItem="incrementCartItem(index)"
-      />
+  <div class="my-cart">
+    <div class="container">
+      <router-link to="/">
+        <div class="my-catalog_link-cart">Назад в каталог</div>
+      </router-link>
+      <h3>Корзина</h3>
+      <p v-if="!CART.length">Корзина пуста! Добавьте товары!</p>
+      <div class="my-cart_wrapper">
+        <div class="my-cart_left">
+          <my-cart-item
+            v-for="(cartItem, index) in CART"
+            :key="cartItem.article"
+            :cart_item_data="cartItem"
+            @delFromCart="delFromCart(index)"
+            @decrementCartItem="decrementCartItem(index)"
+            @incrementCartItem="incrementCartItem(index)"
+          />
+        </div>
+        <div class="my-cart_right">
+          <div class="my-cart_right_total">Итого: {{ totalCost }} Р.</div>
+          <div class="my-cart_right_coupon">
+            <input type="text" placeholder="КУПОН" /><button>ПРИМЕНИТЬ</button>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="my-cart_total">К оплате: {{ totalCost }} р.</div>
   </div>
 </template>
 
@@ -63,26 +72,47 @@ export default {
 
 <style lang="scss">
 .my-cart {
-  position: relative;
+  padding: 4rem 0;
   &_wrapper {
-    margin-bottom: 3rem;
-    padding-bottom: 7rem;
-  }
-  &_total {
-    position: fixed;
-    bottom: 0;
-    right: 0;
-    left: 0;
-    width: 100%;
-    height: 7rem;
     display: flex;
-    align-items: center;
+    align-items: flex-start;
+    justify-content: space-between;
+  }
+  &_left {
+    display: flex;
+    flex-wrap: wrap;
     justify-content: center;
-    font-size: 1.8rem;
-    color: white;
-    font-weight: 500;
+    flex-basis: 60%;
+  }
+  &_right {
+    flex-basis: 40%;
+    display: flex;
+    flex-direction: column;
+    &_coupon {
+      display: flex;
+    }
+    input,
+    button {
+      padding: 1rem 2rem;
+      font-weight: 600;
+    }
+    input {
+      flex-basis: 70%;
+      background: $grey;
+    }
+    button {
+      flex-basis: 30%;
+      background: darken($color: $grey, $amount: 30%);
+      color: $grey;
+    }
+  }
+  &_right_total {
     background-color: rgb(71, 175, 71);
-    box-shadow: 0px -2px 7px rgba(0, 0, 0, 0.521);
+    height: 100%;
+    margin-top: 1rem;
+    padding: 3rem;
+    text-align: center;
+    margin-bottom: 3rem;
   }
 }
 </style>

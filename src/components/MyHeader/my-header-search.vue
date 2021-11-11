@@ -1,6 +1,15 @@
 <template>
   <div class="my-header-search">
-    <transition name="show-input">
+    <transition-group name="show-input">
+      <button
+        v-if="searchActive"
+        class="my-header-search_done"
+        @click="resetSearch, search(searchValue)"
+      >
+        <span class="material-icons">
+          done
+        </span>
+      </button>
       <input
         @keyup.enter="search(searchValue)"
         v-model="searchValue"
@@ -9,8 +18,17 @@
         name="search"
         placeholder="Поиск..."
       />
-    </transition>
-    <button @click="resetSearch">1</button>
+      <button
+        v-if="searchActive"
+        class="my-header-search_reset"
+        @click="resetSearch"
+      >
+        <span class="material-icons">
+          close
+        </span>
+      </button>
+    </transition-group>
+
     <div @click="searchActive = !searchActive" class="my-header-search_row">
       <span class="material-icons my-header-search_icon">
         search
@@ -44,6 +62,7 @@ export default {
     resetSearch() {
       this.searchValue = "";
       this.search();
+      this.searchActive = false;
     },
   },
 };
@@ -63,9 +82,30 @@ export default {
     font-size: 2.5rem;
   }
   input {
-    margin-right: 6rem;
     padding: 0.6rem 1rem;
     background: $grey;
+  }
+
+  &_reset {
+    background: $grey;
+    margin-right: 6rem;
+    transition: all 0.2s ease;
+    &:hover {
+      background: darken($color: $grey, $amount: 8%);
+    }
+
+    span {
+      color: $darkGrey;
+    }
+  }
+  &_done {
+    color: $darkGrey;
+    background: $grey;
+    transition: all 0.2s ease;
+    &:hover {
+      background: $orange;
+      color: $grey;
+    }
   }
 }
 .show-input-enter-active,
@@ -77,6 +117,6 @@ export default {
 .show-input-leave-to {
   opacity: 0;
   transform: translateX(20px);
-  transform-origin: right;
+  transform-origin: left;
 }
 </style>

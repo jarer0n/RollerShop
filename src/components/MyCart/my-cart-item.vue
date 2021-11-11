@@ -1,9 +1,17 @@
 <template>
   <div class="my-cart-item">
-    <img
-      :src="require('../../assets/images/' + cart_item_data.image)"
-      alt="img"
-    />
+    <div class="my-cart-item_img_row">
+      <img
+        class="my-cart-item_img"
+        :src="require('../../assets/images/' + cart_item_data.image)"
+        alt="img"
+      />
+      <button class="my-cart-item_del" @click="$emit('delFromCart')">
+        <span class="material-icons">
+          close
+        </span>
+      </button>
+    </div>
     <div class="my-cart-item_info">
       <div class="my-cart-item_name">
         {{ cart_item_data.name }}
@@ -16,7 +24,6 @@
       {{ cart_item_data.amount }}
       <span @click="incrementCartItem">+</span>
     </div>
-    <button @click="$emit('delFromCart')">Удалить</button>
   </div>
 </template>
 
@@ -46,41 +53,54 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .my-cart-item {
   display: flex;
   align-items: center;
+  flex-direction: column;
   justify-content: space-between;
-  box-shadow: 0 0 8px rgba(48, 48, 48, 0.575);
+  flex-basis: 25%;
   padding: 1rem 2rem;
-  margin-bottom: 1rem;
+  margin-bottom: 2rem;
 
-  img {
+  &_img {
     display: block;
-    max-width: 15rem;
+    max-width: 100%;
     object-fit: cover;
+    box-shadow: 0px 0px 8px $orange;
+    margin-bottom: 2rem;
+    &_row {
+      position: relative;
+    }
   }
-  button {
-    display: block;
-    padding: 0 2rem;
-    height: 3rem;
-    color: white;
-    background-color: rgb(245, 76, 9);
+  &_del {
+    position: absolute;
+    top: 0;
+    right: 0;
+    color: $darkGrey;
+    background: white;
+    &:hover {
+      background: darken($color: $grey, $amount: 5%);
+    }
   }
+
   &_info {
-    flex: 0 0 33%;
+    margin-bottom: 1rem;
   }
   &_name {
     font-size: 1.8rem;
-    color: yellowgreen;
+    color: $orange;
     margin-bottom: 1rem;
-    span {
-      color: rgba(36, 35, 35, 0.445);
-    }
   }
+  &_article {
+    color: rgba($color: $grey, $alpha: 0.5);
+  }
+
   &_price {
     font-weight: 700;
+    color: $grey;
   }
+
   &_amount {
     display: flex;
     align-items: center;
