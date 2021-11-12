@@ -1,19 +1,19 @@
 <template>
   <div class="my-cart-item">
-    <div class="my-cart-item_img_row">
+    <div @click="toItem(cart_item_data.article)" class="my-cart-item_img_row">
       <img
         class="my-cart-item_img"
         :src="require('../../assets/images/' + cart_item_data.image)"
         alt="img"
       />
-      <button class="my-cart-item_del" @click="$emit('delFromCart')">
+      <button class="my-cart-item_del" @click.stop="$emit('delFromCart')">
         <span class="material-icons">
           close
         </span>
       </button>
     </div>
     <div class="my-cart-item_info">
-      <div class="my-cart-item_name">
+      <div @click="toItem(cart_item_data.article)" class="my-cart-item_name">
         {{ cart_item_data.name }}
         <span class="my-cart-item_article">({{ cart_item_data.article }})</span>
       </div>
@@ -48,6 +48,9 @@ export default {
     incrementCartItem() {
       this.$emit("incrementCartItem");
     },
+    toItem(article) {
+      this.$router.push({ name: "products", query: { products: article } });
+    },
   },
   mounted() {},
 };
@@ -69,6 +72,7 @@ export default {
     object-fit: cover;
     box-shadow: 0px 0px 8px $orange;
     margin-bottom: 2rem;
+    cursor: pointer;
     &_row {
       position: relative;
     }
@@ -91,6 +95,7 @@ export default {
     font-size: 1.8rem;
     color: $orange;
     margin-bottom: 1rem;
+    cursor: pointer;
   }
   &_article {
     color: rgba($color: $grey, $alpha: 0.5);

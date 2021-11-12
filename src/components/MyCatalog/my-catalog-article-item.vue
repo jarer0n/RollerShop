@@ -71,7 +71,19 @@ export default {
   &_title {
     font-size: 2rem;
     font-weight: 700;
-    margin-bottom: 3rem;
+    margin-bottom: 5rem;
+    position: relative;
+    &::after {
+      content: "";
+      width: 50%;
+      height: 0.2rem;
+      background: $orange;
+      position: absolute;
+      bottom: -2.5rem;
+      right: 50%;
+      box-shadow: 0px 0px 20px black;
+    }
+
     span {
       font-weight: 400;
       font-size: 1.6rem;
@@ -92,7 +104,9 @@ export default {
     box-shadow: 0 0 8px $orange;
     transition: all 0.2s ease;
     &:hover {
-      box-shadow: 0 0 14px $orange;
+      box-shadow: 0 0 16px $orange;
+      color: $orange;
+      background: $darkGrey;
     }
   }
 }

@@ -35,8 +35,9 @@ export default {
   height: 8rem;
   top: 0;
   left: 0;
-  background: rgba($color: $darkGrey, $alpha: 0.7);
-  box-shadow: 0px 1px 5px $orange;
+  background: rgba($color: $darkGrey, $alpha: 0.6);
+  box-shadow: 0px 1px 3px $orange;
+  backdrop-filter: blur(2px);
   &_row {
     display: flex;
     align-items: center;

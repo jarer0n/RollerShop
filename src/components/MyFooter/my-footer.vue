@@ -16,8 +16,8 @@ export default {
   align-items: center;
   justify-content: center;
   height: 7rem;
-  background: rgba($color: $darkGrey, $alpha: 0.7);
+  background: rgba($color: $darkGrey, $alpha: 0.6);
   color: $grey;
-  box-shadow: 0px -1px 5px $orange;
+  box-shadow: 0px -1px 3px $orange;
 }
 </style>

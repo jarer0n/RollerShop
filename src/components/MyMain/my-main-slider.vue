@@ -51,6 +51,7 @@ export default {
   width: 100%;
   box-shadow: none;
   border-radius: 0;
+  box-shadow: 0 0 20px black;
 }
 .vueperslide__title {
   position: absolute;

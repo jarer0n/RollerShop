@@ -40,7 +40,7 @@ export default {
 .vueperslides {
   width: 40rem;
   border-radius: 2rem;
-  box-shadow: 0 0 8px $headerColor;
+  box-shadow: 0 0 20px black;
 }
 .vueperslide {
   background-size: contain;
@@ -58,6 +58,6 @@ export default {
 }
 
 .vueperslides__bullet--active .default {
-  background-color: $headerColor;
+  background-color: $orange;
 }
 </style>
