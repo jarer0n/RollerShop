@@ -85,7 +85,7 @@ export default {
       right: 5px;
       width: 1rem;
       height: 0.2rem;
-      background: $orange;
+      background: $darkGrey;
       transition: all 0.1s ease;
     }
     &::after {

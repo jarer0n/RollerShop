@@ -2,7 +2,6 @@
   <div>
     <vueper-slides
       autoplay
-      fixed-height="500px"
       class="main-slider"
       :arrows="false"
       :touchable="false"
@@ -76,6 +75,25 @@ export default {
 }
 
 .main-slider .vueperslides__bullet--active .default {
-  background-color: $grey;
+  background-color: $orange;
+}
+@media (max-width: 767px) {
+  .vueperslide.main-slider_slide {
+    background-size: cover;
+  }
+}
+@media (max-width: 640px) {
+  .main-slider .vueperslides__bullet .default {
+    background-color: rgba(0, 0, 0, 0.3);
+    border: none;
+    box-shadow: none;
+    transition: 0.3s;
+    width: 3rem;
+    height: 0.3rem;
+    transform: translateY(1rem);
+  }
+  .main-slider .vueperslides__bullet--active .default {
+    background-color: $orange;
+  }
 }
 </style>

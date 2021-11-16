@@ -1,6 +1,12 @@
 <template>
   <div class="my-catalog">
     <div class="container">
+      <router-link class="my-catalog_link" to="/"
+        ><span class="material-icons">
+          home
+        </span>
+        На главную</router-link
+      >
       <h2 class="my-catalog_title">Каталог товаров</h2>
       <div class="my-catalog_filter">
         <div>
@@ -165,7 +171,19 @@ export default {
 <style lang="scss">
 .my-catalog {
   position: relative;
-  margin-top: 5rem;
+  padding: 5rem 0;
+  &_link {
+    display: flex;
+    align-items: flex-end;
+    color: $grey;
+    transition: all 0.2s ease;
+    &:hover {
+      color: $orange;
+    }
+    span {
+      margin-right: 1rem;
+    }
+  }
   &_title {
     font-size: 2.1rem;
     font-weight: 600;
@@ -176,6 +194,7 @@ export default {
     justify-content: flex-start;
     position: relative;
     margin-right: -1.8rem;
+    margin-bottom: 2rem;
   }
   &_pag {
     display: flex;

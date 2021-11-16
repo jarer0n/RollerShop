@@ -85,4 +85,15 @@ export default {
     margin-right: 1rem;
   }
 }
+@media (max-width: 360px) {
+  .my-header_right {
+    margin-left: 1rem;
+  }
+  .my-header_link_cart_icon {
+    font-size: 2rem;
+  }
+  .my-header_link_cart {
+    margin-left: 1rem;
+  }
+}
 </style>

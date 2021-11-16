@@ -77,11 +77,21 @@ export default {
   &_info {
     font-size: 1.4rem;
     line-height: 150%;
-    flex-basis: 40%;
+    flex-basis: 47%;
     text-shadow: 5px 5px 5px black;
 
     p {
       margin-bottom: 1rem;
+    }
+  }
+}
+@media (max-width: 1024px) {
+  .my-main-about {
+    &_row {
+      flex-direction: column;
+    }
+    &_info {
+      margin-bottom: 2rem;
     }
   }
 }

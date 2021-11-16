@@ -73,6 +73,8 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
+
   &_row {
     font-size: 1rem;
     color: $grey;
@@ -84,12 +86,17 @@ export default {
   input {
     padding: 0.6rem 1rem;
     background: $grey;
+    position: absolute;
+    bottom: -6rem;
   }
 
   &_reset {
     background: $grey;
     margin-right: 6rem;
     transition: all 0.2s ease;
+    position: absolute;
+    bottom: -6rem;
+    left: 11.05rem;
     &:hover {
       background: darken($color: $grey, $amount: 8%);
     }
@@ -102,6 +109,10 @@ export default {
     color: $darkGrey;
     background: $grey;
     transition: all 0.2s ease;
+    position: absolute;
+    bottom: -6rem;
+    left: -10.25rem;
+    z-index: 5;
     &:hover {
       background: $orange;
       color: $grey;
@@ -116,7 +127,15 @@ export default {
 .show-input-enter-from,
 .show-input-leave-to {
   opacity: 0;
-  transform: translateX(20px);
+  transform: translateY(-20px);
   transform-origin: left;
+}
+@media (max-width: 360px) {
+  .my-header-search {
+    span {
+      font-size: 2rem;
+      margin-bottom: 0.3rem;
+    }
+  }
 }
 </style>

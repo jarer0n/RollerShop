@@ -38,6 +38,7 @@ export default {
     font-size: 2.1rem;
     margin-bottom: 4rem;
     position: relative;
+    line-height: 140%;
     span {
       font-size: 2.5rem;
       color: $orange;

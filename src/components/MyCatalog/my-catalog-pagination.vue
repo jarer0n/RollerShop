@@ -20,9 +20,9 @@ export default {
 
 <style lang="scss" scoped>
 .my-catalog-pagination {
-  margin: 0 1rem 2rem 0;
-  border-radius: 50%;
-  border: 1px solid $grey;
+  margin: 0 0.7rem;
+  background: rgba($color: $grey, $alpha: 0.3);
+  box-shadow: 0px 0px 6px $orange;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -30,6 +30,7 @@ export default {
   font-size: 1rem;
   height: 2.5rem;
   cursor: pointer;
+  transition: all 0.2s ease-in-out;
 
   &:hover {
     background: $grey;
@@ -37,8 +38,14 @@ export default {
   }
 }
 .page_selected {
-  background: $orange;
+  background: rgba($color: $orange, $alpha: 0.6);
   color: $grey;
   border: none;
+  box-shadow: 0px 0px 16px $orange;
+  transform: scale(1.2);
+  &:hover {
+    background: rgba($color: $orange, $alpha: 0.6);
+    color: $grey;
+  }
 }
 </style>
