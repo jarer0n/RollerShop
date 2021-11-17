@@ -1,19 +1,7 @@
 <template>
   <div class="my-cart">
     <div class="container">
-      <div class="my-cart_links">
-        <router-link to="/"
-          ><div class="my-cart_links_item">
-            <span class="material-icons"> home </span><span>На главную</span>
-          </div></router-link
-        >
-        <router-link to="/catalog"
-          ><div class="my-cart_links_item">
-            <span class="material-icons"> shopping_bag </span
-            ><span>В каталог</span>
-          </div></router-link
-        >
-      </div>
+      <my-catalog-navigation />
       <div class="my-cart_title">Корзина</div>
       <p class="my-cart_none" v-if="!CART.length">
         Корзина пуста! Добавьте товары!
@@ -52,9 +40,10 @@
 <script>
 import MyCartItem from "./my-cart-item.vue";
 import { mapActions, mapGetters } from "vuex";
+import MyCatalogNavigation from "../MyCatalog/my-catalog-navigation.vue";
 export default {
   name: "my-cart",
-  components: { MyCartItem },
+  components: { MyCartItem, MyCatalogNavigation },
   computed: {
     ...mapGetters(["CART"]),
     totalCost() {
@@ -102,28 +91,10 @@ export default {
   &_title {
     text-align: center;
     margin-bottom: 4rem;
-    font-size: 2.1rem;
+    font-size: 2.3rem;
+    text-shadow: 0px 0px 14px black;
   }
-  &_links {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 2rem;
-    &_item {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: $grey;
-      transition: all 0.2s ease-in-out;
-      &:hover {
-        color: $orange;
-        text-shadow: 0px 0px 3px $orange;
-      }
-      span {
-        margin-left: 1rem;
-      }
-    }
-  }
+
   &_none {
     font-size: 1.4rem;
     color: rgba($color: $grey, $alpha: 0.3);
@@ -149,6 +120,7 @@ export default {
       display: flex;
       margin-bottom: 5rem;
       &_btn {
+        padding: 0 1rem;
         &:hover {
           background: darken($color: $grey, $amount: 40%);
         }
@@ -174,11 +146,42 @@ export default {
   }
   &_right_total {
     background-color: rgb(71, 175, 71);
+    box-shadow: 0px 0px 8px black;
     height: 100%;
     margin-top: 1rem;
     padding: 3rem;
     text-align: center;
     margin-bottom: 3rem;
+  }
+}
+@media (max-width: 767px) {
+  .my-cart {
+    &_wrapper {
+      flex-direction: column;
+    }
+    &_right {
+      flex-basis: 100%;
+      width: 100%;
+      margin: 0;
+      &_confirm {
+        align-self: flex-end;
+      }
+    }
+  }
+}
+@media (max-width: 367px) {
+  .my-cart {
+    &_right {
+      &_coupon {
+        &_btn {
+          font-size: 1rem;
+        }
+      }
+      input {
+        font-size: 1.2rem;
+        width: 50%;
+      }
+    }
   }
 }
 </style>

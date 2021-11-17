@@ -39,16 +39,16 @@ export default {
   justify-content: center;
   flex-direction: column;
   align-items: center;
-  flex-basis: 28%;
+  flex: 1 1 30%;
   margin: 0 2rem 4rem;
 
   &_img {
-    max-width: 25rem;
+    max-width: 30rem;
     margin-bottom: 3rem;
     position: relative;
     img {
       width: 100%;
-      box-shadow: 0px 0px 8px $orange;
+      box-shadow: 0px 0px 8px black;
     }
   }
   &_name {
@@ -71,6 +71,11 @@ export default {
     span {
       font-size: 3rem;
     }
+  }
+}
+@media (max-width: 767px) {
+  .my-favorite-item {
+    flex: 1 1 100%;
   }
 }
 </style>

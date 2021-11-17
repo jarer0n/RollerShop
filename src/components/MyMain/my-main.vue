@@ -36,9 +36,10 @@ export default {
   &_title {
     text-align: center;
     font-size: 2.1rem;
-    margin-bottom: 4rem;
+    margin-bottom: 6rem;
     position: relative;
     line-height: 140%;
+    text-shadow: 0px 0px 14px black;
     span {
       font-size: 2.5rem;
       color: $orange;
@@ -53,12 +54,14 @@ export default {
       bottom: -2rem;
       left: 50%;
       transform: translateX(-50%);
+      box-shadow: 0px 0px 8px black;
     }
   }
   &_tocatalog {
     margin-top: 3rem;
     text-align: center;
-    background: $darkGrey;
+    background: transparent;
+    backdrop-filter: blur(5px);
     border: 2px solid $orange;
     color: $grey;
     padding: 0.7rem 0;
@@ -66,6 +69,7 @@ export default {
     display: flex;
     align-items: center;
     justify-content: center;
+    box-shadow: 0px 0px 8px black;
     span {
       margin-left: 2rem;
     }

@@ -70,7 +70,7 @@ export default {
     display: block;
     max-width: 100%;
     object-fit: cover;
-    box-shadow: 0px 0px 8px $orange;
+    box-shadow: 0px 0px 8px black;
     margin-bottom: 2rem;
     cursor: pointer;
     &_row {
@@ -116,6 +116,7 @@ export default {
       justify-content: center;
       text-align: center;
       background: rgb(71, 175, 71);
+      box-shadow: 0px 0px 4px black;
       color: white;
       font-weight: 700;
       border-radius: 50%;
@@ -124,6 +125,25 @@ export default {
       width: 3rem;
       margin: 0 1rem;
     }
+  }
+}
+@media (max-width: 767px) {
+  .my-cart-item {
+    flex-basis: 30%;
+    &_name {
+      font-size: 1.4rem;
+      line-height: 120%;
+    }
+  }
+}
+@media (max-width: 567px) {
+  .my-cart-item {
+    flex-basis: 50%;
+  }
+}
+@media (max-width: 367px) {
+  .my-cart-item {
+    flex-basis: 100%;
   }
 }
 </style>

@@ -50,6 +50,7 @@ export default {
     font-size: 2.1rem;
     margin-bottom: 5rem;
     position: relative;
+    text-shadow: 0px 0px 14px black;
     &::after {
       content: "";
       position: absolute;
@@ -59,6 +60,7 @@ export default {
       width: 8rem;
       height: 0.2rem;
       background: $orange;
+      box-shadow: 0px 0px 8px black;
     }
   }
   &_row {
@@ -69,7 +71,7 @@ export default {
   &_img {
     flex-basis: 50%;
     img {
-      box-shadow: 0px 0px 3px $orange;
+      box-shadow: 0px 0px 10px black;
       max-width: 100%;
       object-fit: cover;
     }

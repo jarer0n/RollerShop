@@ -131,10 +131,10 @@ export default {
   transform-origin: left;
 }
 @media (max-width: 360px) {
-  .my-header-search {
+  .my-header-search_row {
     span {
       font-size: 2rem;
-      margin-bottom: 0.3rem;
+      margin-bottom: 0.5rem;
     }
   }
 }

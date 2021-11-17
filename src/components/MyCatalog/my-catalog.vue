@@ -9,7 +9,7 @@
       >
       <h2 class="my-catalog_title">Каталог товаров</h2>
       <div class="my-catalog_filter">
-        <div>
+        <div class="my-catalog_filter_row">
           <span
             class="my-catalog_filter_item"
             :class="{ 'sort-target': ascending }"
@@ -175,7 +175,7 @@ export default {
   &_link {
     display: flex;
     align-items: flex-end;
-    color: $grey;
+    color: rgba($color: $grey, $alpha: 0.5);
     transition: all 0.2s ease;
     &:hover {
       color: $orange;
@@ -185,8 +185,9 @@ export default {
     }
   }
   &_title {
-    font-size: 2.1rem;
+    font-size: 2.3rem;
     font-weight: 600;
+    text-shadow: 0px 0px 14px black;
   }
   &_row {
     display: flex;
@@ -203,6 +204,7 @@ export default {
   }
   &_filter {
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
     margin-bottom: 2rem;
@@ -238,5 +240,27 @@ h2 {
   text-align: center;
   font-size: 2.5rem;
   margin-bottom: 4rem;
+}
+@media (max-width: 620px) {
+  .my-catalog {
+    padding: 2.5rem 0;
+    &_link {
+      margin-bottom: 2rem;
+      font-size: 1.3rem;
+      span {
+        font-size: 1.8rem;
+      }
+    }
+    &_filter {
+      &_row {
+        margin-bottom: 2rem;
+      }
+      &_item {
+        font-size: 1rem;
+      }
+    }
+  }
+  .my-catalog_filter_row {
+  }
 }
 </style>

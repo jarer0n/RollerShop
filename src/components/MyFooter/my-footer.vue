@@ -43,11 +43,11 @@ export default {
 
 <style lang="scss" scoped>
 .my-footer {
-  max-height: 26rem;
   padding: 2rem 0;
-  background: rgba($color: $darkGrey, $alpha: 0.6);
+  background: rgba($color: $darkGrey, $alpha: 0.8);
+  backdrop-filter: blur(2px);
   color: $grey;
-  box-shadow: 0px -1px 3px $orange;
+  box-shadow: 0px -1px 8px black;
   font-size: 1.2rem;
   &_row {
     display: flex;

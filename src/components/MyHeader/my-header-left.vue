@@ -66,7 +66,7 @@ export default {
     height: 95%;
     border-radius: 50%;
     transition: all 1s ease;
-    box-shadow: 0 0 8px $orange;
+    box-shadow: 0 0 8px black;
 
     &_item {
       display: flex;

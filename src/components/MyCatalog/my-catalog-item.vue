@@ -61,13 +61,11 @@ export default {
   justify-content: space-between;
   padding: 2rem;
   line-height: 150%;
-  flex-basis: 23.6%;
+  flex: 0 1 23.6%;
   background: white;
   box-shadow: 0 0 12px black;
   margin-bottom: 2rem;
   margin-right: 1.8rem;
-  border-top-left-radius: 3rem;
-  border-left: 4px solid $orange;
 
   &_name {
     font-size: 1.8rem;
@@ -121,6 +119,16 @@ export default {
   &_img {
     display: block;
     width: 100%;
+  }
+}
+@media (max-width: 1296px) {
+  .item {
+    flex: 0 1 30%;
+  }
+}
+@media (max-width: 767px) {
+  .item {
+    flex: 1 1 30%;
   }
 }
 </style>

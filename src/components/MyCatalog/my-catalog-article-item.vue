@@ -1,8 +1,9 @@
 <template>
   <div class="my-catalog-article-item ">
     <div class="container">
+      <my-catalog-navigation />
       <div class="my-catalog-article-item_wrapper">
-        <my-catalog-slider :product="product" />
+        <my-catalog-slider class="my-catalog-slider" :product="product" />
         <div class="my-catalog-article-item_row">
           <div class="my-catalog-article-item_title">
             {{ product.name }} <span>({{ product.article }})</span>
@@ -26,9 +27,10 @@
 <script>
 import { mapGetters, mapActions } from "vuex";
 import MyCatalogSlider from "./my-catalog-slider.vue";
+import MyCatalogNavigation from "./my-catalog-navigation.vue";
 export default {
   name: "my-catalog-article-item",
-  components: { MyCatalogSlider },
+  components: { MyCatalogSlider, MyCatalogNavigation },
   data() {
     return {};
   },
@@ -60,10 +62,10 @@ export default {
 
 <style lang="scss">
 .my-catalog-article-item {
+  padding: 5rem 0;
   &_wrapper {
     display: flex;
     justify-content: space-between;
-    margin-top: 12rem;
   }
   &_row {
     flex-basis: 40%;
@@ -107,6 +109,26 @@ export default {
       box-shadow: 0 0 16px $orange;
       color: $orange;
       background: $darkGrey;
+    }
+  }
+  .my-catalog-slider {
+    // flex: 1 1 20%;
+  }
+}
+@media (max-width: 767px) {
+  .my-catalog-article-item {
+    &_wrapper {
+      flex-direction: column;
+    }
+    &_row {
+      margin-top: 6rem;
+    }
+  }
+}
+@media (max-width: 380px) {
+  .my-catalog-article-item {
+    &_wrapper {
+      align-items: center;
     }
   }
 }
