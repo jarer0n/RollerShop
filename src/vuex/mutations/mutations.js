@@ -22,14 +22,14 @@ export default {
         
     },
     SET_FAVORITE: (state, product) => {
-        if(state.favorite.indexOf(product)!=-1){
+        if(state.favorite.map(item => item.article).indexOf(product.article) > -1){
             state.favorite.splice(state.favorite.indexOf(product), 1)
+            product.active = false
         }else {
             state.favorite.push(product)
-            
+            product.active = true
         }
     },
-
     INCREMENT: (state, index) => {
         state.cart[index].amount++;
     },

@@ -4,7 +4,7 @@
       <span
         @click.stop="$emit('addToFavorite', this.product_data)"
         class="material-icons item_favorite"
-        :class="{ active: favoriteActive }"
+        :class="{ active: product_data.active }"
         @click="favoriteActive = !favoriteActive"
       >
         star

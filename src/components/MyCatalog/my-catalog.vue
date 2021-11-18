@@ -85,6 +85,7 @@ export default {
       "PAGE",
       "PRODUCTS_ON_PAGE",
       "SEARCH_VALUE",
+      "FAVORITE",
     ]),
 
     showFilterProducts() {
@@ -107,6 +108,7 @@ export default {
       "ADD_TO_FAVORITE",
       "CHANGE_PAGE",
       "TO_FIRST_PAGE",
+      "DEL_FROM_FAVORITE",
     ]),
     targetProduct(article) {
       this.$router.push({ name: "products", query: { products: article } });
@@ -163,6 +165,14 @@ export default {
   mounted() {
     this.GET_PRODUCTS_FROM_API().then(() => {
       this.sortBySearch(this.SEARCH_VALUE);
+      let fav = this.FAVORITE.map((item) => item.article);
+      for (let i = 0; i < this.sortedProducts.length; i++) {
+        if (fav.indexOf(this.sortedProducts[i].article) > -1) {
+          this.sortedProducts[i].active = true;
+        } else {
+          this.sortedProducts[i].active = false;
+        }
+      }
     });
   },
 };
